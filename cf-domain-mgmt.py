@@ -3,10 +3,11 @@
 
 
 __title__ = 'cf-domain-mgmt'
-__version__ = '0.2.0'
+__version__ = '1.0.0'
 __author__ = 'm8'
 __email__ = 'zmpbox@gmail.com'
 __license__ = 'MIT'
+__status__ = "Production"
 
 
 import os
@@ -16,6 +17,7 @@ import datetime
 import logging
 import argparse
 from pycloudflare_v4 import api
+
 
 start_time = datetime.datetime.now().strftime('%Y%m%d_%H:%M:%S')
 logger = logging.getLogger(__title__)
