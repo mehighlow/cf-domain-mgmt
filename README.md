@@ -45,8 +45,43 @@ or
 pip install -r requirements.txt
 ```
 
+## *Config example:*
+```
+cf_account:
+  email: email@domain.com
+  token: cf_token_comes_here
+
+domains:
+  domain.com:
+    records:
+      - { name: 'domain.com', content: '1.1.1.1', type: 'A', ttl: '1', proxy: 'true'  }
+      - { name: 'domain.com', content: '2.2.2.2', type: 'A', ttl: '1', proxy: 'true'  }
+      - { name: 'test.domain.com', content: '3.3.3.3', type: 'A', ttl: '1', proxy: 'false'  }
+      - { name: 'www.domain.com', content: 'domain.com', type: 'CNAME', ttl: '1', proxy: 'true'  }
+      - { name: 'domain.com', content: 'mail.domain.com', type: 'MX', priority: '5', ttl: '1' }
+      - { name: '_dmarc.domain.com', content: 'v=DMARC1; p=none; sp=none; rua=mailto:postmaster@domain.com', type: 'TXT', ttl: '1' }
+      - { name: 'domain.com', content: 'google-site-verification=1jhgsdJGXASJGDS', type: 'TXT', ttl: '1' }
+      - { name: 'domain.com', content: 'v=spf1 include:_spf.domain.com ~all', type: 'TXT', ttl: '1' }
+      - { name: 'domain._domainkey.domain.com', content: 'v=DKIM1; k=rsa; p=s0mEKeyComeShErE', type: 'TXT', ttl: '1' }
+    cf_settings:
+      websockets: 'on'
+      browser_cache_ttl: 31536000
+      email_obfuscation: 'off'
+      hotlink_protection: 'off'
+      ip_geolocation: 'on'
+      security_level: 'essentially_off'
+      ssl: 'full'
+      development_mode: 'off'
+      always_online: 'on'
+      challenge_ttl: 7200
+```
+
 ## *Usage:*
 
+```
+./cf-domain-mgmt.py -c configs/example.yml
+```
+note: optionally you can add list of domains:
 ```
 ./cf-domain-mgmt.py -c configs/example.yml -d domain.com, domain2.com
 ```
