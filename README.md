@@ -4,12 +4,12 @@ This script allows manage DNS records that are held in CloudFlare in declarative
 # *Purpose of the tool:*
 1. ####Play with DNS records:
 * create: simply add new line like:
-```json
+```
 - { name: 'newrecord.domain.com', content: '8.8.8.8', type: 'A', ttl: '1', proxy: 'true'  }
 
 ```
 * update
-```json
+```
 - { name: 'newrecord.domain.com', content: '1.1.1.1', type: 'A', ttl: '1', proxy: 'false'  }
 
 ```
@@ -37,19 +37,19 @@ Easy to set all records 'proxy:true' with security level you need.
 * No need to set different CF settings in web-based account.
 
 ## *Current Version:*
--  1.0.0
+-  v1.0.0
 
 ## *Requirements:*
 https://github.com/zmgit/pycloudflare-v4, version >= 0.8.4
 
 or
-```python
+```
 pip install -r requirements.txt
 ```
 
 ## *Usage:*
 
-```python
+```
 ./cf-domain-mgmt.py -c configs/example.yml -d domain.com, domain2.com
 ```
 
@@ -57,3 +57,8 @@ pip install -r requirements.txt
 
 1. Please, READ, example.yml in config dir!
 2. CF api calls are limited to 1200calls/300seconds for free account. Keep this in mind you have lots of domains.
+
+### *ToDo:*
+1. Check the result after changes have been made (one more api call and compare result)
+2. Calculate approximate api calls based on number of domains and number of records to warn about limits
+3. Generate report
